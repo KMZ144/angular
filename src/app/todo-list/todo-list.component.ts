@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent {
-
+  inputValue:string="";
+  todolist:string[]=[];
+  add(){
+    this.todolist.push(this.inputValue)
+  }
+  remove(num:number){
+    console.log(num)
+    console.log(this.todolist)
+      this.todolist=this.todolist.filter(function(item,index){return index!=num})
+    console.log(this.todolist)
+  }
 }
