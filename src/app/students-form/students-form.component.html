@@ -4,12 +4,12 @@
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
       <input  type="text" class="form-control" id="name" name="name" [(ngModel)]="studentName">
-      <div  class="invalid-feedback d-block">invalid name</div>
+      <div *ngIf="validateName(studentName)" class="invalid-feedback d-block">{{nameError}}</div>
     </div>
     <div class="mb-3">
       <label for="age" class="form-label">Age</label>
-      <input type="age" class="form-control" id="age" name="age" [(ngModel)]="studentAge" >
-      <div class="invalid-feedback d-block" >invalid age</div>
+      <input type="text" class="form-control" id="age" name="age" [(ngModel)]="studentAge" >
+      <div *ngIf="validateAge(studentAge)" class="invalid-feedback d-block" >{{ageError}}</div>
     </div>
     <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
   </form>
