@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-students-form',
   templateUrl: './students-form.component.html',
   styleUrls: ['./students-form.component.css']
 })
-export class StudentsFormComponent {
+export class StudentsFormComponent implements OnInit{
   studentName:string='';
   studentAge:string='';
   students:{name:string,age:string}[]=[];
@@ -14,7 +14,6 @@ export class StudentsFormComponent {
 
 onSubmit(){
   if (!this.validateName(this.studentName)&&!this.validateAge(this.studentAge)){
-    console.log("df");
     this.students.push({name:this.studentName,age:this.studentAge})
   }
 
@@ -42,15 +41,22 @@ validateAge(age:string){
   }
   if (!regex.test(age)){
     this.ageError="age must numbers only"
-
    return true
 
   }
   if(parseInt(age)<=17){
     this.ageError="age must be at least 18"
-
     return true
   }
   return false
+}
+
+@Output() myEvent=new EventEmitter();
+constructor(){
+console.log("ffff")
+}
+ngOnInit(): void {
+  this.myEvent.emit('hag')
+
 }
 }
