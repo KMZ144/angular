@@ -1,3 +1,4 @@
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,6 +10,18 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { StudentsFormComponent } from './students-form/students-form.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component'
+
+const routes: Routes = [
+  { path: 'home', component: SliderComponent  },
+  { path:'',redirectTo:'home',pathMatch:'full' },
+  { path: 'products', component: ProductsComponent },
+  { path :'product/:id',component:ProductDetailsComponent },
+  { path :'todo',component:TodoListComponent },
+  { path : 'form',component:StudentsFormComponent }
+]
 
 @NgModule({
   declarations: [
@@ -18,12 +31,17 @@ import { ProductComponent } from './product/product.component';
     TodoListComponent,
     StudentsFormComponent,
     ProductsComponent,
-    ProductComponent
+    ProductComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    RouterModule.forRoot(routes),
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
