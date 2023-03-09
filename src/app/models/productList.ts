@@ -2,14 +2,14 @@ import { IProduct } from "./iproduct"
 export let productList:IProduct[]=[{
   id:1,
   name:"chair",
-  quantity:5,
+  quantity:1,
   price:80,
   imgUrl:"assets/products/1.jpg"
 },
 {
   id:3,
   name:"chair",
-  quantity:5,
+  quantity:0,
   price:80,
   imgUrl:"assets/products/2.jpg"
 },
