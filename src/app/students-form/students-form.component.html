@@ -1,0 +1,35 @@
+<div class="container">
+<div class="d-flex justify-content-center">
+  <form class="col-8" >
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input  type="text" class="form-control" id="name" name="name" [(ngModel)]="studentName">
+      <div  class="invalid-feedback d-block">invalid name</div>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input type="age" class="form-control" id="age" name="age" [(ngModel)]="studentAge" >
+      <div class="invalid-feedback d-block" >invalid age</div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+  </form>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students let i = index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{student.name}}</td>
+      <td>{{student.age}}</td>
+
+    </tr>
+    <tr>
+  </tbody>
+</table>
+</div>

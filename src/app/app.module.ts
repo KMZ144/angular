@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SliderComponent } from './slider/slider.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { StudentsFormComponent } from './students-form/students-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     SliderComponent,
-    TodoListComponent
+    TodoListComponent,
+    StudentsFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
