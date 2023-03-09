@@ -5,7 +5,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   templateUrl: './students-form.component.html',
   styleUrls: ['./students-form.component.css']
 })
-export class StudentsFormComponent implements OnInit{
+export class StudentsFormComponent{
   studentName:string='';
   studentAge:string='';
   students:{name:string,age:string}[]=[];
@@ -51,12 +51,4 @@ validateAge(age:string){
   return false
 }
 
-@Output() myEvent=new EventEmitter();
-constructor(){
-console.log("ffff")
-}
-ngOnInit(): void {
-  this.myEvent.emit('hag')
-
-}
 }
