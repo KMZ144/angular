@@ -1,0 +1,65 @@
+import { IProduct } from "./iproduct"
+export let productList:IProduct[]=[{
+  id:1,
+  name:"chair",
+  quantity:5,
+  price:80,
+  imgUrl:"assets/products/1.jpg"
+},
+{
+  id:3,
+  name:"chair",
+  quantity:5,
+  price:80,
+  imgUrl:"assets/products/2.jpg"
+},
+{
+  id:4,
+  name:"chair",
+  quantity:70,
+  price:900,
+  imgUrl:"assets/products/3.jpg"
+},
+{
+  id:5,
+  name:"chair",
+  quantity:5,
+  price:80,
+  imgUrl:"assets/products/4.jpg"
+},
+{
+  id:6,
+  name:"chair",
+  quantity:40,
+  price:870,
+  imgUrl:"assets/products/5.jpg"
+},
+{
+  id:7,
+  name:"chair99",
+  quantity:445,
+  price:30,
+  imgUrl:"assets/products/6.jpg"
+},
+{
+  id:8,
+  name:"chair",
+  quantity:500,
+  price:807,
+  imgUrl:"assets/products/1.jpg"
+},
+{
+  id:9,
+  name:"chair2",
+  quantity:70,
+  price:8000,
+  imgUrl:"assets/products/2.jpg"
+},
+{
+  id:10,
+  name:"chair3",
+  quantity:8,
+  price:90,
+  imgUrl:"assets/products/3.jpg"
+}
+]

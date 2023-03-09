@@ -7,6 +7,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SliderComponent } from './slider/slider.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { StudentsFormComponent } from './students-form/students-form.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { StudentsFormComponent } from './students-form/students-form.component';
     NavBarComponent,
     SliderComponent,
     TodoListComponent,
-    StudentsFormComponent
+    StudentsFormComponent,
+    ProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
