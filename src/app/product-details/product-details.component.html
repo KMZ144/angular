@@ -1,15 +1,17 @@
 <div class="container">
-  <div class="card m-3 ">
-    <div class="d-flex flex-row">
-      <div class="col-sm-4 col-md-6">
-        <img src="{{product?.imgUrl}}" class="img-fluid rounded-start" alt="...">
+  <div class="card m-3 w-50 ms-auto me-auto">
+    <div class="d-flex flex-wrap">
+      <div class="col-sm-12">
+        <img src="{{product?.imgUrl}}" class="" alt="...">
       </div>
-      <div class="col-sm-2 col-md-4">
+      <div class="col-sm-8 col-xs-12">
         <div class="card-body">
           <h5 class="card-title">Name: {{product?.name}}</h5>
           <p class="card-text">Price :{{product?.price}}</p>
           <p class="card-text">quantity: {{product?.quantity}}</p>
           <p class="card-text">price: {{product?.price}}</p>
+          <i class="fa-solid fa-pen-to-square fa-2x" routerLink="/product/{{product?.id}}/edit"></i>
+          <i class="fa-solid fa-trash fa-2x"></i>
         </div>
       </div>
     </div>

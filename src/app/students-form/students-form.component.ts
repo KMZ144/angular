@@ -20,35 +20,36 @@ onSubmit(){
 }
 
 validateName(name:string){
+  let isValidName:boolean=false;
   const regex=new RegExp('^[a-zA-Z]{3,}$');
   if (name==''){
     this.nameError="name is required"
+    isValidName=true
 
-    return true
   }
   if (!regex.test(name)){
-    this.nameError="name must be at least 3 characters"
-
-   return true
+    this.nameError="name must be at least 3 characters and character only"
+    isValidName=true
   }
-  return false
+  return isValidName
 }
 validateAge(age:string){
+  let isValidAge:boolean=false
   const regex=new RegExp('^([0-9])*$');
   if (age==''){
     this.ageError="age is required"
-    return true
+    isValidAge=true
   }
   if (!regex.test(age)){
     this.ageError="age must numbers only"
-   return true
+   isValidAge=true
 
   }
   if(parseInt(age)<=17){
     this.ageError="age must be at least 18"
-    return true
+    isValidAge=true
   }
-  return false
+  return isValidAge
 }
 
 }

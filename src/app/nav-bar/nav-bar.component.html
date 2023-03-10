@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
         <li class="nav-item">
           <a class="nav-link"
            [routerLink]="['/products']"
-           [routerLinkActive ]="'text-info'"
+           [routerLinkActive]="'text-info'"
            >Products</a>
         </li>
         <li class="nav-item">
@@ -24,10 +24,37 @@
           >To Do list</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/form']"
+          <a class="nav-link"
+          [routerLink]="['/form']"
           [routerLinkActive]="'text-info'"
           >validation Form</a>
         </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link">
+          {{getUserName}}
+          </a>
+        </li>
+        <div>
+
+        </div>
+        <li class="nav-item">
+          <a class="nav-link"
+          [routerLink]="['/login']"
+          [routerLinkActive]="'text-info'"
+          *ngIf="!isLoggedIn"
+          >login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          [routerLink]="['/logout']"
+          [routerLinkActive]="'text-info'"
+          *ngIf="isLoggedIn"
+          (click)="logOut()"
+          >logout</a>
+        </li>
+
       </ul>
     </div>
   </div>

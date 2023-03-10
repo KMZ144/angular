@@ -1,3 +1,5 @@
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +14,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
+import { CreateProductComponent } from './create-product/create-product.component'
 
 const routes: Routes = [
   { path: 'home', component: SliderComponent  },
@@ -20,7 +23,13 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path :'product/:id',component:ProductDetailsComponent },
   { path :'todo',component:TodoListComponent },
-  { path : 'form',component:StudentsFormComponent }
+  { path : 'form',component:StudentsFormComponent },
+  { path: 'login',component:LoginComponent},
+  { path: 'product/create',component:CreateProductComponent},
+  { path: 'product/:id/edit',component:EditProductComponent},
+  { path: 'logout',redirectTo:'home',pathMatch:'full'},
+  { path: '**',component:NotfoundComponent}
+
 ]
 
 @NgModule({
@@ -32,16 +41,18 @@ const routes: Routes = [
     StudentsFormComponent,
     ProductsComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    ProductDetailsComponent,
+    EditProductComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+
     RouterModule.forRoot(routes),
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

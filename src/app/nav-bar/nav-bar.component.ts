@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+  constructor(private authService:AuthService ){
+
+  }
+  get getUserName(){
+    return this.authService.currentUser?.name
+  }
+  get isLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
+  logOut(){
+    this.authService.logout()
+  }
+
 
 }

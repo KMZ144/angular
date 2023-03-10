@@ -1,5 +1,12 @@
 img{
-  height: 400px;
+  height: 600px;
+  width:100%;
   object-fit: cover;
+}
+i:hover {
+  cursor: pointer;
+}
+i {
+  margin-right: 1rem;
 }
 
