@@ -1,43 +1,111 @@
 <div class="container w-50">
-  <form>
+  <form [formGroup]="form" (submit)="submitForm($event)">
     <div class="mb-3">
-      <label for="product-name" class="form-label" >Product name</label>
-      <input type="text"
-      name="name"
-      class="form-control"
-      id="product-name"
-      placeholder="{{product?.name}}"
-      [(ngModel)]="name"
-      >
+      <label for="product-name" class="form-label">Product name</label>
+      <input
+        type="text"
+        name="name"
+        formControlName="name"
+        class="form-control"
+        id="product-name"
+      />
+      <ng-container *ngIf="getName.touched">
+        <div
+          *ngIf="getName.hasError('required')"
+          class="invalid-feedback d-block"
+        >
+          product Name is required
+      </div>
+      </ng-container>
+      <ng-container *ngIf="getName.touched">
+        <div
+          *ngIf="getName.hasError('pattern')"
+          class="invalid-feedback d-block"
+        >
+          product Name is characters only
+      </div>
+      </ng-container>
     </div>
     <div class="mb-3">
       <label for="product-qty" class="form-label">Qty</label>
-      <input class="form-control"
-      id="product-qty"
-      name="quantity"
-      placeholder="{{product?.quantity}}"
-      [(ngModel)]="quantity"
-      >
-    </div>
+      <input
+        class="form-control"
+        id="product-qty"
+        name="quantity"
+        formControlName="quantity"
+      />
+      <ng-container *ngIf="getQuantity.touched">
+        <div
+          *ngIf="getQuantity.hasError('required')"
+          class="invalid-feedback d-block"
+        >
+        Quantity is required
+      </div>
+      </ng-container>
+      <ng-container *ngIf="getQuantity.touched">
+        <div
+          *ngIf="getQuantity.hasError('pattern')"
+          class="invalid-feedback d-block"
+        >
+          product Name is numbers only
+      </div>
+      </ng-container>
+      <ng-container *ngIf="getQuantity.touched">
+        <div
+          *ngIf="getQuantity.hasError('min')"
+          class="invalid-feedback d-block"
+        >
+          product qty can't be negative or zero
+      </div>
+      </ng-container>
+        </div>
     <div class="mb-3">
       <label for="product-price" class="form-label">price</label>
-      <input class="form-control"
-      id="product-price"
-      name="price"
-      placeholder="{{product?.price}}"
-      [(ngModel)]="price"
-      >
-    </div>
-    <div class="mb-3">
-      <label for="formfile">Product img</label>
-      <input class="form-control"
-      type="file"
-      id="formFile"
-      name="imgUrl"
-      [(ngModel)]="imgUrl"
-      >
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+      <input
+        class="form-control"
+        id="product-price"
+        name="price"
+        formControlName="price"
+      />
+      <ng-container *ngIf="getPrice.touched">
+        <div
+          *ngIf="getPrice.hasError('required')"
+          class="invalid-feedback d-block"
+        >
+        Price is required
+      </div>
+      </ng-container>
+      <ng-container *ngIf="getPrice.touched">
+        <div
+          *ngIf="getPrice.hasError('pattern')"
+          class="invalid-feedback d-block"
+        >
+          product Price is numbers only
+      </div>
 
+
+
+
+      </ng-container>
+      <ng-container *ngIf="getPrice.touched">
+        <div
+          *ngIf="getPrice.hasError('min')"
+          class="invalid-feedback d-block"
+        >
+          product Price can't be 0 or negative
+      </div>
+
+      </ng-container>
+      <label for="product-url" class="form-label">img url</label>
+      <input
+        class="form-control"
+        id="product-url"
+        name="imgUrl"
+        formControlName="imgUrl"
+      />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{productId?'edit':'add'}}</button>
+  </form>
 </div>

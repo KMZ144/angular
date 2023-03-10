@@ -7,10 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  products:IProduct[]=[];
+  products:any=[];
   constructor(private productService:ProductService){
   }
   ngOnInit(): void {
-    this.products=this.productService.getAllProducts()
+    this.productService.getAllProducts().subscribe(
+      {
+        next:(response)=>{
+          this.products=response;
+        }
+      }
+    );
   }
 }

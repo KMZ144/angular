@@ -16,6 +16,7 @@
           <a class="nav-link"
            [routerLink]="['/products']"
            [routerLinkActive]="'text-info'"
+           [routerLinkActiveOptions]="{ exact: true }"
            >Products</a>
         </li>
         <li class="nav-item">
@@ -28,6 +29,13 @@
           [routerLink]="['/form']"
           [routerLinkActive]="'text-info'"
           >validation Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          routerLink="products/0/edit"
+          [routerLinkActive]="'text-info'"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >add products</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">

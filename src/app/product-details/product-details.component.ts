@@ -1,7 +1,7 @@
 import { IProduct } from './../models/iproduct';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -13,12 +13,24 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
   productId:number=0;
-  product:IProduct|null=null;
-  constructor(private productService:ProductService,private activatedRoute:ActivatedRoute ){
+  product:any;
+  constructor(private productService:ProductService,private activatedRoute:ActivatedRoute,private router:Router ){
     this.productId=Number(activatedRoute.snapshot.paramMap.get('id'));
   }
   ngOnInit(){
-    this.product=this.productService.getProductById(this.productId);
+    this.productService.getProductById(this.productId).subscribe(
+      {
+        next:(res)=>{
+          this.product=res
+        }
+      }
+    );
   }
 
+  delete(id:any){
+    this.productService.deleteProduct(id).subscribe(
+      ()=>{}
+    )
+    this.router.navigate(['/products'])
+  }
 }

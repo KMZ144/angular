@@ -1,7 +1,8 @@
 import { IProduct } from './../models/iproduct';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product',
@@ -9,39 +10,66 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
-  product:IProduct|null=null;
-  price:string='';
-  quantity:number=0;
-  imgUrl:string='';
-  name:string=''
   productId:number=0;
-  constructor (private productService:ProductService,private activatedRoute:ActivatedRoute ){
-    this.productId=Number(activatedRoute.snapshot.paramMap.get('id'));
+  product:any;
+  form=new FormGroup({
+    name:new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]*$')]),
+    price:new FormControl('',[Validators.required,Validators.min(1),Validators.pattern('^([0-9])*$')]),
+    quantity:new FormControl('',[Validators.required,Validators.min(1),Validators.pattern('^([0-9])*$')]),
+    imgUrl:new FormControl()
+})
+  constructor (private productService:ProductService,private activatedRoute:ActivatedRoute,private router:Router ){
+    this.activatedRoute.paramMap.subscribe((params)=>{
+      this.productId=Number(params.get('id'))
+      this.form.controls.name.setValue('');
+      this.form.controls.price.setValue('');
+      this.form.controls.quantity.setValue('');
+      this.form.controls.imgUrl.setValue('');
+    })
   }
   ngOnInit(): void {
-    this.product=this.productService.getProductById(this.productId);
-  }
-  validatePrice(price:string){
-    let isValidPrice:boolean=false
-    const regex=new RegExp('^([0-9])*$');
-    if(Number(price)<=0){
-      isValidPrice=true
+    if(this.productId != 0){
+      this.productService.getProductById(this.productId).subscribe((res)=>{
+        this.product=res
+        this.form.controls.name.setValue(this.product.name);
+        this.form.controls.price.setValue(this.product.price);
+        this.form.controls.quantity.setValue(this.product.quantity);
+        this.form.controls.imgUrl.setValue(this.product.imgUrl);
+      });
     }
-    else if (!regex.test(price)){
-      isValidPrice=true
-    }
-    else if (price=''){
-      isValidPrice=true
-    }
-    return isValidPrice;
-  }
-  validateName(name:string){
+
 
   }
-  validateQuantity(qty:number){
-
+  get getName(){
+    return this.form.controls.name
   }
-  validateImg(){
-
+  get getPrice(){
+    return this.form.controls.price
+  }
+  get getQuantity(){
+    return this.form.controls.quantity
+  }
+  submitForm(e:Event){
+    e.preventDefault();
+    if (this.form.status=='VALID'){
+      if(this.productId==0){
+        this.productService.addProduct(this.form.value).subscribe(
+          {
+            next:(res)=>{
+              this.router.navigate(['/products'])
+            }
+          }
+        )
+      }
+      else{
+        this.productService.editProduct(this.productId,this.form.value).subscribe(
+          {
+            next:(res)=>{
+              this.router.navigate(['/products'])
+            }
+          }
+        )
+      }
+      }
   }
 }

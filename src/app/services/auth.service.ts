@@ -10,7 +10,7 @@ export class AuthService {
   login(name:string,pass:string){
     this.currentUser={name:name,pass:pass};
   }
-  isLoggedIn(){
+   isLoggedIn(){
     if(this.currentUser?.name&&this.currentUser.pass){
       return true
     }

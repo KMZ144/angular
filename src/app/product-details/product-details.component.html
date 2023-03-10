@@ -10,8 +10,8 @@
           <p class="card-text">Price :{{product?.price}}</p>
           <p class="card-text">quantity: {{product?.quantity}}</p>
           <p class="card-text">price: {{product?.price}}</p>
-          <i class="fa-solid fa-pen-to-square fa-2x" routerLink="/product/{{product?.id}}/edit"></i>
-          <i class="fa-solid fa-trash fa-2x"></i>
+          <i class="fa-solid fa-pen-to-square fa-2x" routerLink="/products/{{product?.id}}/edit"></i>
+          <i class="fa-solid fa-trash fa-2x" (click)="delete(product?.id)"></i>
         </div>
       </div>
     </div>
