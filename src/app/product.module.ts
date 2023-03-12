@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: 'products',
-    // canActivate:[AuthGuard],
+     canActivate:[AuthGuard],
     children: [
       { path: '', component: ProductsComponent },
       { path: ':id', component: ProductDetailsComponent },

@@ -28,18 +28,22 @@ export class LoginComponent {
   }
   validatePassword(pass:string){
     let isValidPass:boolean=false;
-    const regex=new RegExp('');
+    const regex=new RegExp('^([A-Za-z0-9]){8,}');
     if(pass=''){
       this.errors.pass="pass is required"
+      isValidPass=true;
     }
     if(!regex.test(pass)){
-      this.errors.pass="pass must contain uppercase and 8 characters at least"
+      this.errors.pass="pass must be at lest 8 characters "
+      isValidPass=true
     }
     return isValidPass;
   }
   login(){
+    if(!this.validateName(this.name)&&!this.validatePassword(this.pass)){
     this.authService.login(this.name,this.pass)
     this.router.navigate(['/products'])
+    }
   }
   logout(){
     this.authService.logout();

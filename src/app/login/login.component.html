@@ -9,11 +9,13 @@
       name="name"
       [(ngModel)]="name"
       >
+      <div [ngClass]="{'d-block':validateName(name)}" class="invalid-feedback" >{{errors.name}}</div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
       <input type="password" class="form-control" name="pass" id="exampleInputPassword1" [(ngModel)]="pass">
     </div>
+    <div [ngClass]="{'d-block':validatePassword(pass)}" class="invalid-feedback" >{{errors.pass}}</div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
